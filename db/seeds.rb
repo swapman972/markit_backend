@@ -24,7 +24,6 @@ end
 response = RestClient.get("https://discover.search.hereapi.com/v1/discover?in=circle:40.7533,-73.9069;r=13000&q=event&limit=100&apiKey=#{ENV['API_KEY']}")
 event = JSON.parse(response)
 count = 0
-# debugger
 while count < event["items"].count do
     hours = event["items"][count]["openingHours"]
     if (hours) 
@@ -68,7 +67,6 @@ end
 response = RestClient.get("https://discover.search.hereapi.com/v1/discover?in=circle:40.7533,-73.9069;r=13000&q=ramen&limit=100&apiKey=#{ENV['API_KEY']}")
 ramen = JSON.parse(response)
 
-# debugger
 count = 0
 while count < ramen["items"].count do
     hours = ramen["items"][count]["openingHours"]
@@ -564,6 +562,6 @@ while count < park["items"].count do
 end
 
 User.create( firstN: 'Jordan', lastN: 'Melidor-Fuxis', zipcode: 11372)
-100.times do
+200.times do
     Rating.create(user_id: User.all.sample.id.to_i, event_id: Event.all.sample.id.to_i)
 end
